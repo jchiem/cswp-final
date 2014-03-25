@@ -1,5 +1,5 @@
     var map;
-	var markers = [];
+	var markers = []; //1 = toilets 2 = computer labs //3 = cafeteria //4 = library //
 	var mapcanvas;
 	var metropoliaLocation;
 	var description = "<p class='mapDescriptionBox'>Helsinki Metropolia University of Applied Science, Polytechnical University in Finland.</p";
@@ -36,7 +36,7 @@
 			if (status == google.maps.GeocoderStatus.OK) {
 				if (results[1]) {
 					map.setZoom(17);
-					map.setCenter(latlng);
+					map.setCenter(new google.maps.LatLng(60.221194, 24.805220));
 					marker = new google.maps.Marker({position: latlng,map: map,icon: imageURL,title: title,content: title});
 					/* Set onclick popup */
 			//		var infowindow = new google.maps.InfoWindow({content: title});
@@ -80,6 +80,45 @@
 		markers[i].setMap(map);
 	  }
 	}
+
+    function toggleMarker()
+    {
+		toggledMap = !toggledMap;
+		if(toggledMap)
+		{
+    		codeAddress('Vanha maantie 6, Espoo, Finland', 'Helsinki Metropolia UAS',"images/toilet.jpeg", description);
+		}
+		else
+		{
+			toggledInfo = false;
+			deleteMarkers();
+		}
+    }
+
+    function setToiletMarkers()
+    {
+    	codeLatLng("60.220747,24.805066", "Toilet","images/toilet.jpg",description);
+    }
+
+
+	function showInfo()
+	{
+		if(!toggledMap){
+			return;
+		}
+		toggledInfo = !toggledInfo;
+		if(toggledInfo)
+		{
+			for (var i = 0; i < markers.length; i++) {
+			 	infoWindow.open(map, markers[i]);
+	  		}	
+		}
+		else{
+			 toggledInfo=false;
+			 infoWindow.close(map, markers[i]);
+		}
+	}
+
 	function showLocation()
 	{
 		centerMap("60.221194,24.805220");
@@ -103,37 +142,6 @@
 				alert('Geocoder failed due to: ' + status);
 			}
 		});
-	}
-    function toggleMarker()
-    {
-		toggledMap = !toggledMap;
-		if(toggledMap)
-		{
-		//codeLatLng("60.221194,24.805220", "Helsinki Metropolia UAS", "images/metropoliaLogo.gif");
-    	codeAddress('Vanha maantie 6, Espoo, Finland', 'Helsinki Metropolia UAS',"images/metropoliaLogo.gif", description);
-		}
-		else
-		{
-			toggledInfo = false;
-			deleteMarkers();
-		}
-    }
-	function showInfo()
-	{
-		if(!toggledMap){
-			return;
-		}
-		toggledInfo = !toggledInfo;
-		if(toggledInfo)
-		{
-			for (var i = 0; i < markers.length; i++) {
-			 	infoWindow.open(map, markers[i]);
-	  		}	
-		}
-		else{
-			 toggledInfo=false;
-			 infoWindow.close(map, markers[i]);
-		}
 	}
 	
     google.maps.event.addDomListener(window, 'load', initialize);
