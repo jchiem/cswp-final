@@ -7,6 +7,10 @@
     
     <link rel="stylesheet" type="text/css" href="style.css" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<!---Google API and Key--->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyAK5xRBrFCSgkizwwtXPjyKixZ_M6tdXuE&sensor=false"></script>
+	<script type="text/javascript" src="mapScript.js"></script>
 </head>
 
 <body class="body">
@@ -23,22 +27,19 @@
     <div class="mainContent">
    		<div class="content">
         <content>
-
-                	<p>This website was made for a final assignment in Client-side webprogramming, a course given at Helsinki Metropolia University of Applied Sciences by Joakim Chiem & Marc-Andre Leprohon</p>
-                    <p>Please click the links to display things on the map. </p>
+			<p>This website was made for a final assignment in Client-side webprogramming, a course given at Helsinki Metropolia University of Applied Sciences by Joakim Chiem &amp Marc-Andre Leprohon</p>
+			<p>Please click the links to display things on the map. </p>
+			<div id="mapContent"><div id="mapCanvas"></div></div>
         </content>
         </div>
     </div>
     
-    <aside class="topSidebar">
-    	<article>
-		TEST
-        </article>
-    </aside>
+	<button onclick="toggleMarker();">Metropolia Location</button>
+    <button onclick="showInfo();">Show info</button>
     
     
 	<footer class="mainFooter">
-    <p>Copyright &copy;<a href="#"> Joakim Chiem & Marc-Andre Leprohon</a></p>
+    <p>Copyright &copy;<a href="#"> Joakim Chiem &amp Marc-Andre Leprohon</a></p>
 
 </body>
 

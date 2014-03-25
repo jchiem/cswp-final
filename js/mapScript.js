@@ -35,7 +35,7 @@
 		geocoder.geocode({ 'latLng': latlng }, function (results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				if (results[1]) {
-					map.setZoom(11);
+					map.setZoom(17);
 					marker = new google.maps.Marker({position: latlng,map: map,icon: imageURL,title: title,content: title});
 					/* Set onclick popup */
 			//		var infowindow = new google.maps.InfoWindow({content: title});
@@ -52,10 +52,10 @@
 	
 	function initialize() {
 		geocoder = new google.maps.Geocoder();
-		var myLatlng = new google.maps.LatLng(60.220794, 24.806120);
+		var myLatlng = new google.maps.LatLng(60.221194, 24.805220);
 		var mapOptions = {
 		  center: myLatlng,
-		  zoom: 16,
+		  zoom: 17,
 		  mapTypeId: google.maps.MapTypeId.ROADMAP
 		};
 		mapcanvas =document.getElementById("mapCanvas");
@@ -85,7 +85,8 @@
 		toggledMap = !toggledMap;
 		if(toggledMap)
 		{
-    		codeAddress('Vanha maantie 6, Espoo, Finland', 'Helsinki Metropolia UAS',"images/metropoliaLogo.gif", description);
+		codeLatLng("60.221194, 24.805220", "Helsinki Metropolia UAS", "images/metropoliaLogo.gif");
+    	//	codeAddress('Vanha maantie 6, Espoo, Finland', 'Helsinki Metropolia UAS',"images/metropoliaLogo.gif", description);
 		}
 		else
 		{
@@ -111,6 +112,6 @@
 		}
 	}
 	
-      google.maps.event.addDomListener(window, 'load', initialize);
+    google.maps.event.addDomListener(window, 'load', initialize);
 
 
