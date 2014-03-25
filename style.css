@@ -1,0 +1,229 @@
+@charset "utf-8";
+/* CSS Document */
+
+body{
+	background: #ffdba3;
+	font-size:87.5%; /*Base font size is 14px so roughly 12*/
+	font-family:Arial, "Lucida Sans Unicode";/*sets font*/
+	line-height:1.5; /*sets line height*/
+	text-align:left;
+	color:#C30;
+}
+
+.body{
+	margin:0 auto;
+	width: 70%; /*by setting it to 70% */
+	clear:both; /*clear both clears floating elements on both sides*/	
+}
+
+a{
+	text-decoration:none;
+	color:#FFFFFF;
+}
+
+a:link, a:visisted{
+	
+	color:#5BB9F0;
+}
+
+a:hover, a:active{
+	color:#FC6;
+}
+
+a:hover.navBar, #active {
+/*on hover above change background on button*/	
+}
+
+
+.mainHeader img{
+width:35%;
+height:auto;
+margin-top:3%;
+margin-bottom:1%;
+}
+
+/*the navbar*/
+ul{
+	list-style:none;
+	padding:0;
+}
+ul li{
+	display:block;
+}
+nav{
+	float:left;	
+	margin-right:5%;
+}
+nav a:link{
+	color:#FFFFFF;
+	display:inline-block;
+	padding:10px 25px;/*come back later to assign height*/
+	height:20px;
+	width:150px;
+	background:#F63;
+}
+nav a:hover{
+	color:#FFFFFF;
+	display:inline-block;
+	padding:10px 25px;/*come back later to assign height*/
+	height:20px;
+	width:150px;
+	background:#F93;
+}
+#active{
+	color:#FFFFFF;
+	display:inline-block;
+	padding:10px 25px;/*come back later to assign height*/
+	height:20px;
+	width:150px;
+	background:#EC892F;
+}
+
+.mainContent{
+	line-height:25px;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px; 
+}
+
+.content{
+	width:70%;
+	float:left;/*in order to be able to have sidebar on right*/	
+}
+.image{
+	width:25%;
+	margin-top:1%;
+	margin-right:2%;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px; 
+	float:left;
+}
+
+.topContent{
+	background-color:#FFF;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px; 	
+	padding:3% 5%;
+	margin-top:1.5%;
+}
+
+.bottomContent{
+	background-color:#FFF;
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px; 	
+	padding:3% 5%;
+	margin-top:2%;
+}
+
+
+
+.postInfo{
+font-style:italic;
+font-size:85%;
+color:#3972B7;
+}
+
+.topSidebar{
+	width:24%;
+	float:left;
+	background:#F4F9FF;		
+	border-radius:5px;
+	-moz-border-radius:5px;
+	-webkit-border-radius:5px; 	
+	margin-left:2%;
+	margin-top:1%;
+	padding-left:2%;
+	padding-right:2%;
+}
+
+
+.mainFooter{
+	width:100%;
+	float:left;
+	background:#F30;
+}
+
+.mainFooter p{
+	width:90%;
+	margin-left: 2%;
+	color:#FFF;
+}
+
+@media only screen and (min-width: 641px) and (max-width:800px)
+{
+	.mainHeader img{
+		width:60%;
+	}
+}
+
+
+@media only screen and (min-width: 150px) and (max-width:640px)
+{
+	.body{
+		width: 90%; 
+		font-size:95%;
+	}
+	
+	.mainHeader img{
+		width:100%;
+		height:auto;
+		margin-top:3%;
+		margin-bottom:1%;	
+	}
+	
+	.mainHeader nav{
+		height:160px;
+	}
+	
+	.mainHeader nav ul{
+		padding-left:0;
+	}
+	
+	.mainHeader nav ul li{
+		width:100%;
+		text-align:center;
+	}
+	
+	/*style for a links and if they have been visited*/
+	.mainHeader nav a:link, .mainHeader nav a:visited{
+		padding:10px 25px;/*come back later to assign height*/
+		height:20px;
+		display:block;
+	}
+
+	.mainContent{
+		line-height:28px;
+	}
+	
+	.content{
+		width:100%;
+		float:left;/*in order to be able to have sidebar on right*/	
+	}
+	
+	.topContent{
+		padding:3% 5%;
+		margin-top:4%;
+	}
+	
+	.bottomContent{
+		padding:3% 5%;
+		margin-top:4%;
+	}
+	
+	.postInfo{
+		display:none;
+	}
+	
+	.topSidebar, .middleSidebar, .bottomSidebar{
+		width:96%;
+		margin-left:0%;
+	}
+	
+	.mainFooter{
+		margin:3% 0 2% 0;
+	}
+	
+}
