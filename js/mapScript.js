@@ -36,6 +36,7 @@
 			if (status == google.maps.GeocoderStatus.OK) {
 				if (results[1]) {
 					map.setZoom(17);
+					map.setCenter(latlng);
 					marker = new google.maps.Marker({position: latlng,map: map,icon: imageURL,title: title,content: title});
 					/* Set onclick popup */
 			//		var infowindow = new google.maps.InfoWindow({content: title});
@@ -79,14 +80,37 @@
 		markers[i].setMap(map);
 	  }
 	}
-	
+	function showLocation()
+	{
+		centerMap("60.221194,24.805220");
+	}
+
+	function centerMap(latlng)
+	{
+		var latlngStr = latlng.split(',', 2);
+		var lat = parseFloat(latlngStr[0]);
+		var lng = parseFloat(latlngStr[1]);
+		var latlng = new google.maps.LatLng(lat, lng);
+		geocoder.geocode({ 'latLng': latlng }, function (results, status) {
+			if (status == google.maps.GeocoderStatus.OK) {
+				if (results[1]) {
+					map.setZoom(17);
+					map.setCenter(latlng);
+				} else {
+					alert('No results found');
+				}
+			} else {
+				alert('Geocoder failed due to: ' + status);
+			}
+		});
+	}
     function toggleMarker()
     {
 		toggledMap = !toggledMap;
 		if(toggledMap)
 		{
-		codeLatLng("60.221194, 24.805220", "Helsinki Metropolia UAS", "images/metropoliaLogo.gif");
-    	//	codeAddress('Vanha maantie 6, Espoo, Finland', 'Helsinki Metropolia UAS',"images/metropoliaLogo.gif", description);
+		//codeLatLng("60.221194,24.805220", "Helsinki Metropolia UAS", "images/metropoliaLogo.gif");
+    	codeAddress('Vanha maantie 6, Espoo, Finland', 'Helsinki Metropolia UAS',"images/metropoliaLogo.gif", description);
 		}
 		else
 		{
