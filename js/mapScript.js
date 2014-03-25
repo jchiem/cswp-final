@@ -1,13 +1,15 @@
     var map;
 	var markers = []; //1 = toilets 2 = computer labs //3 = cafeteria //4 = library //
+	var toiletArray;
 	var mapcanvas;
 	var metropoliaLocation;
-	var description = "<p class='mapDescriptionBox'>Helsinki Metropolia University of Applied Science, Polytechnical University in Finland.</p";
 	
 	var geocoder;
 	var toggledMap =false;
 	var toggledInfo = false;
 	var infoWindow;
+
+	var toiletsVisible=false;
 	
 		/* Geocoding based on address */
 	function codeAddress(address, title, imageURL, content) {
@@ -27,7 +29,7 @@
 	}
 	
 	/* Geocoding based on latitude and longitude */
-	function codeLatLng(latlng, title, imageURL) {
+	function codeLatLng(latlng, title, imageURL, description) {
 		var latlngStr = latlng.split(',', 2);
 		var lat = parseFloat(latlngStr[0]);
 		var lng = parseFloat(latlngStr[1]);
@@ -37,10 +39,12 @@
 				if (results[1]) {
 					map.setZoom(17);
 					map.setCenter(new google.maps.LatLng(60.221194, 24.805220));
-					marker = new google.maps.Marker({position: latlng,map: map,icon: imageURL,title: title,content: title});
+					var marker = new google.maps.Marker({position: latlng,map: map,icon: imageURL,title: title,content: title});
+					marker.setVisible(false);
+					markers.push(marker);
 					/* Set onclick popup */
-			//		var infowindow = new google.maps.InfoWindow({content: title});
-			//		google.maps.event.addListener(marker, 'click', function() {infowindow.open(marker.get('map'), marker);});
+					marker.infowindow = new google.maps.InfoWindow({content: description});
+					google.maps.event.addListener(marker, 'click', function() {marker.infowindow.open(marker.get('map'), marker);});
 				} else {
 					alert('No results found');
 				}
@@ -61,7 +65,8 @@
 		};
 		mapcanvas =document.getElementById("mapCanvas");
 		map = new google.maps.Map(mapcanvas,mapOptions);
-		infoWindow = new google.maps.InfoWindow({content: description});
+
+		createToiletMarkers();
 	}
 	
 	// Deletes all markers in the array by removing references to them.
@@ -81,6 +86,7 @@
 	  }
 	}
 
+//old toggle function that didnt work, is actually deleting markers
     function toggleMarker()
     {
 		toggledMap = !toggledMap;
@@ -95,11 +101,27 @@
 		}
     }
 
-    function setToiletMarkers()
+    function createToiletMarkers()
     {
-    	codeLatLng("60.220747,24.805066", "Toilet","images/toilet.jpg",description);
+    	codeLatLng("60.220647,24.805065", "Toilet","images/toilet.jpg","1st Floor, A-Building");
+    	codeLatLng("60.221006,24.804713", "Toilet","images/toilet.jpg","1st Floor, A-Building");
+    	codeLatLng("60.221816,24.804205", "Toilet","images/toilet.jpg","2nd Floor, B-Building");
+    	codeLatLng("60.220647,24.804250", "Toilet","images/toilet.jpg","1st Floor, A-Building");
     }
 
+
+    function toggleToiletMarkers()
+    {
+    	toiletsVisible= !toiletsVisible;
+    	for(var i=0;i<markers.length;i++)
+    	{
+    		if(markers[i].title=="Toilet")
+    		{
+    			markers[i].setVisible(toiletsVisible);
+    			markers[i].infowindow.close();
+    		}
+    	}
+    }
 
 	function showInfo()
 	{
