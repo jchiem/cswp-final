@@ -1,0 +1,99 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>CSWP Final Assignment - Home</title>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<script src="js/slippry.min.js"></script>
+	<script src="//use.edgefonts.net/cabin;source-sans-pro:n2,i2,n3,n4,n6,n7,n9.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" href="css/slippry.css">
+
+</head>
+
+<body class="body">
+<div id="wrapper">
+	<header class="mainHeader">
+    	<a href="#"><img src="images/logo.gif"></a>
+    </header>
+    <nav class="sideNav">
+    <ul>
+        <li><a href="index.html">Home </a></li>
+        <li><a href="metguide.html">School map</a></li>
+        <li><a id="active" href="gallery.html">Photos</a></li>
+    </ul>
+    </nav>
+    <div class="mainContent">
+        <content>
+			<p>This website was made for a final assignment in Client-side webprogramming, a course given at Helsinki Metropolia University of Applied Sciences by Joakim Chiem &amp Marc-Andre Leprohon</p>
+			
+          
+				<h1>Gallery</h1>
+                <p> Enjoy the pictures. :) </p>
+           
+			<ul id="slideShow">
+				<li><a href="#slide1"><img src="images/image-1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>"></a></li>
+				<li><a href="#slide2"><img src="images/image-2.jpg"  alt="This is caption 2"></a></li>
+				<li><a href="#slide3"><img src="images/image-4.jpg" alt="And this is some very long caption for slide 3. Yes, really long."></a></li>
+			</ul>
+		</content>
+    </div>
+</div>
+
+<script type="text/javascript">
+				$(function() {
+				var slideShow = $("#slideShow").slippry({
+					transition: 'fade',
+					useCSS: true,
+					speed: 1000,
+					pause: 3000,
+					auto: true,
+					preload: 'visible'
+				});
+
+				$('.stop').click(function () {
+					slideShow.stopAuto();
+				});
+
+				$('.start').click(function () {
+					slideShow.startAuto();
+				});
+
+				$('.prev').click(function () {
+					slideShow.goToPrevSlide();
+					return false;
+				});
+				$('.next').click(function () {
+					slideShow.goToNextSlide();
+					return false;
+				});
+				$('.reset').click(function () {
+					slideShow.destroySlider();
+					return false;
+				});
+				$('.reload').click(function () {
+					slideShow.reloadSlider();
+					return false;
+				});
+				$('.init').click(function () {
+					slideShow = $("#slideShow").slippry();
+					return false;
+				});
+			});
+
+</script>
+ 
+
+<footer class="mainFooter">
+        <p>Copyright Joakim and Marc</p>
+    </footer>
+
+    
+
+
+
+</body>
+
+</html>
