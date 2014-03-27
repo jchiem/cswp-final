@@ -58,10 +58,6 @@ a:hover, a:active{
 	color:#FC6;
 }
 
-a:hover.navBar, #active {
-/*on hover above change background on button*/	
-}
-
 
 .mainHeader img{
 width:35%;
@@ -107,65 +103,11 @@ margin-bottom:1%;
 	background:#EC892F;
 }
 
-.mainContent{
-	line-height:25px;
-	border-radius:5px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px; 
-}
 
-.content{
+.mainContent{
 	width:70%;
 	height: 100%;
 	float:left;/*in order to be able to have sidebar on right*/	
-}
-.image{
-	width:25%;
-	margin-top:1%;
-	margin-right:2%;
-	border-radius:5px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px; 
-	float:left;
-}
-
-.topContent{
-	background-color:#FFF;
-	border-radius:5px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px; 	
-	padding:3% 5%;
-	margin-top:1.5%;
-}
-
-.bottomContent{
-	background-color:#FFF;
-	border-radius:5px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px; 	
-	padding:3% 5%;
-	margin-top:2%;
-}
-
-
-
-.postInfo{
-font-style:italic;
-font-size:85%;
-color:#3972B7;
-}
-
-.topSidebar{
-	width:24%;
-	float:left;
-	background:#F4F9FF;		
-	border-radius:5px;
-	-moz-border-radius:5px;
-	-webkit-border-radius:5px; 	
-	margin-left:2%;
-	margin-top:1%;
-	padding-left:2%;
-	padding-right:2%;
 }
 
 
@@ -229,31 +171,8 @@ color:#3972B7;
 	}
 
 	.mainContent{
-		line-height:28px;
-	}
-	
-	.content{
 		width:100%;
 		float:left;/*in order to be able to have sidebar on right*/	
-	}
-	
-	.topContent{
-		padding:3% 5%;
-		margin-top:4%;
-	}
-	
-	.bottomContent{
-		padding:3% 5%;
-		margin-top:4%;
-	}
-	
-	.postInfo{
-		display:none;
-	}
-	
-	.topSidebar, .middleSidebar, .bottomSidebar{
-		width:96%;
-		margin-left:0%;
 	}
 	
 	.mainFooter{

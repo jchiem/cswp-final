@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Joakim Chiem - Home</title>
+    <title>CSWP Final Assignment - School Map</title>
     <meta charset="utf-8" />
     
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -26,46 +26,41 @@
     <nav class="sideNav">
     <ul>
         <li><a id="active" href="index.html">Home </a></li>
-        <li><a href="metguide.html">Met Guide</a></li>
+        <li><a href="metguide.html">School map</a></li>
         <li><a href="#">Something </a></li>
     </ul>
     </nav>
     <div class="mainContent">
-   		<div class="content">
         <content>
 			<p>This website was made for a final assignment in Client-side webprogramming, a course given at Helsinki Metropolia University of Applied Sciences by Joakim Chiem &amp Marc-Andre Leprohon</p>
 			<p>Please click the links to display things on the map. </p>
 			<div id="mapContent"><div id="mapCanvas"></div></div>
+            
+            <nav  id="menu" class="nav">  
+            <ul>
+                <li>
+                    <a title="Show Metropolia" href="#" onclick="showLocation();return false;">
+                        <span  class="icon"> <i aria-hidden="true"  ></i></span><span>Show Metropolia</span>
+                    </a>
+                </li>
+                <li>      
+                    <a title="Show Toilet" class="mapMenu" href="#" onclick="toggleToiletMarkers();return false;"><span  class="icon"><i aria-hidden="true"></i></span><span>Toilet</span></a>
+                </li> 
+                <li>
+                    <a title="Show Cafeteria" class="mapMenu" href="#" onclick="toggleFoodMarkers();return false;"><span  class="icon"><i  aria-hidden="true" ></i></span><span>Cafeteria</span></a>
+                </li>
+                <li>
+                    <a title="Show Library" class="mapMenu" href="#" onclick="toggleLibraryMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Library</span></a> 
+                </li>
+                <li>
+                    <a title="Show Porter" class="mapMenu" href="#" onclick="togglePorterMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Porter</span></a>    
+                </li>
+                <li>
+                    <a title="Show Entrance" class="mapMenu" href="#" onclick="toggleEntranceMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Main entrance</span></a>
+                </li>
+            </ul>
+        </nav>
         </content>
-
-           <nav  id="menu" class="nav">  
-    <ul>
-        <li>
-            <a title="Click to do something" href="#" onclick="showLocation();return false;">
-                <span  class="icon"> <i aria-hidden="true"  ></i></span><span>Show Metropolia</span>
-            </a>
-        </li>
-        <li>      
-            <a title="Click to do something" class="mapMenu" href="#" onclick="toggleToiletMarkers();return false;"><span  class="icon"><i aria-hidden="true"></i></span><span>Toilet</span></a>
-        </li> 
-        <li>
-            <a title="Click to do something" class="mapMenu" href="#" onclick="toggleFoodMarkers();return false;"><span  class="icon"><i  aria-hidden="true" ></i></span><span>Cafeteria</span></a>
-        </li>
-        <li>
-            <a title="Click to do something" class="mapMenu" href="#" onclick="toggleLibraryMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Library</span></a> 
-        </li>
-        <li>
-            <a title="Click to do something" class="mapMenu" href="#" onclick="togglePorterMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Porter</span></a>    
-        </li>
-        <li>
-            <a title="Click to do something" class="mapMenu" href="#" onclick="toggleEntranceMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Main entrance</span></a>
-        </li>
-    </ul>
-</nav>
-
-        </div>
-
-
     </div>
 
 
