@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+<title>Untitled Document</title>
+</head>
+
+<body>
+<link rel='stylesheet' type='text/css' href='http://www.reittiopas.fi/search/new/reittiopasBox.css'>
+
+<div id='reittiopasBox'>
+
+<div id='logo' colspan='2'>
+  <div id='formCornerNW'><img src='http://www.reittiopas.fi/search/new/images/formCornerNW.png'></div>
+  <div id='formCornerNE'><img src='http://www.reittiopas.fi/search/new/images/formCornerNE.png'></div>
+  <div id='hslLogo'><img src='http://www.reittiopas.fi/search/new/images/hslLogo.png'></div>
+  <div id='header'><a href='http://www.reittiopas.fi'>Reittiopas.fi</a></div>
+</div>
+
+<form method='get' action='http://reittiopas.fi/en/?' target='_blank' accept-charset='UTF-8' id='searchForm'>
+
+<div id='inputFormType1' class='inputFormType'><input type='radio' checked='checked' name='formType' id='formType1' onclick='switchToFormPT();'><label for='formType1'>Public transport</label></div>
+<div id='inputFormType2' class='inputFormType'><input type='radio' name='formType' id='formType2' onclick='switchToFormCycling();'><label for='formType2'>Cycling and walking</label></div>
+
+<input type='text' value='From' name='from' id='inputFrom' class='inputText' onfocus='if (this.value=="From") { this.value = ""; this.style.color="black"; }'>
+<input type='text' value='To' name='to' id='inputTo' class='inputText' onfocus='if (this.value=="To") { this.value = ""; this.style.color="black"; }'>
+<div id='inputTime'>
+<input type='text' value='' name='hour' size='2' maxlength='2' id='inputHour' class='inputText'> :
+<input type='text' value='' name='min' size='2' maxlength='2' id='inputMin' class='inputText'>
+<div id='inputVm'>
+<div id='vm1'><input id='inputVm1' type='radio' checked='checked' name='vm' value='1' class='inputRadio'><label for='inputVm1' id='labelVm1'>Departure</label></div><br>
+<div id='vm2'><input id='inputVm2' type='radio' name='vm' value='2' class='inputRadio'><label for='inputVm2' id='labelVm2'>Arrival</label></div>
+</div>
+</div><br>
+<div id='inputDate'>
+<input type='text' value='' name='day' size='2' maxlength='2' id='inputDay' class='inputText'> .
+<input type='text' value='' name='month' size='2' maxlength='2' id='inputMonth' class='inputText'> .
+<input type='text' value='' name='year' size='4' maxlength='4' id='inputYear' class='inputText'>
+</div>
+<div id='submitContainer'>
+<input type='button' value='Search' id='submitButton' onclick='submitForm();'>
+</div>
+
+<div id='bottomBorder'>
+<div id='bottomBorderLeft'><img src='http://www.reittiopas.fi/search/new/images/formCornerSW.png'></div>
+<div id='bottomBorderCenter'></div>
+<div id='bottomBorderRight'><img src='http://www.reittiopas.fi/search/new/images/formCornerSE.png'></div>
+</div>
+
+</form>
+</div>
+
+<script type='text/javascript'> 
+  var currentTime = new Date();
+  // Fill day, month, year, hour and minute
+  date = currentTime.getDate() + '';
+  month = (currentTime.getMonth()+1) + '';
+  year = currentTime.getFullYear();
+  hour = currentTime.getHours() + '';
+  minute = currentTime.getMinutes() + '';
+  if (date.length < 2) {
+    date = '0' + date;
+  }
+  if (month.length < 2) {
+    month = '0' + month;
+  }
+  if (hour.length < 2) {
+    hour = '0' + hour;
+  }
+  if (minute.length < 2) {
+    minute = '0' + minute;
+  }
+ 
+  document.getElementById('inputDay').value = date;
+  document.getElementById('inputMonth').value = month;
+  document.getElementById('inputYear').value = year;
+  document.getElementById('inputHour').value = hour;
+  document.getElementById('inputMin').value = minute;
+  
+  function switchToFormPT() {
+    document.getElementById('inputDay').disabled=false;
+    document.getElementById('inputDay').className='inputText';
+    document.getElementById('inputMonth').disabled=false;
+    document.getElementById('inputMonth').className='inputText';
+    document.getElementById('inputYear').disabled=false;
+    document.getElementById('inputYear').className='inputText';
+    document.getElementById('inputHour').disabled=false;
+    document.getElementById('inputHour').className='inputText';
+    document.getElementById('inputMin').disabled=false;
+    document.getElementById('inputMin').className='inputText';
+    document.getElementById('inputVm1').disabled=false;
+    document.getElementById('inputVm2').disabled=false;
+    document.getElementById('labelVm1').style.color='';
+    document.getElementById('labelVm2').style.color='';
+  }
+  function switchToFormCycling() {
+    document.getElementById('inputDay').disabled=true;
+    document.getElementById('inputDay').className='inputTextDisabled';
+    document.getElementById('inputMonth').disabled=true;
+    document.getElementById('inputMonth').className='inputTextDisabled';
+    document.getElementById('inputYear').disabled=true;
+    document.getElementById('inputYear').className='inputTextDisabled';
+    document.getElementById('inputHour').disabled=true;
+    document.getElementById('inputHour').className='inputTextDisabled';
+    document.getElementById('inputMin').disabled=true;
+    document.getElementById('inputMin').className='inputTextDisabled';
+    document.getElementById('inputVm1').disabled=true;
+    document.getElementById('inputVm2').disabled=true;
+    document.getElementById('labelVm1').style.color='#aaa';
+    document.getElementById('labelVm2').style.color='#aaa';
+  }
+  function submitForm() {
+    if (document.getElementById('formType1').checked) {
+      document.getElementById('searchForm').submit();
+    } else {
+      var from = document.getElementById('inputFrom').value;
+      var to = document.getElementById('inputTo').value;
+      var cyclingUrl = 'http://pk.hsl.fi/en/#from('+from+')to('+to+')';
+      window.open(cyclingUrl, 'blank');
+    }
+  }
+</script>
+
+</body>
+</html>
