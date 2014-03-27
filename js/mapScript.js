@@ -10,6 +10,10 @@
 	var infoWindow;
 
 	var toiletsVisible=false;
+	var foodVisible= false;
+	var libraryVisible=false;
+	var porterVisible=false;
+	var mainEntranceVisible=false;
 	
 		/* Geocoding based on address */
 	function codeAddress(address, title, imageURL, content) {
@@ -104,14 +108,79 @@
     function createToiletMarkers()
     {
     	codeLatLng("60.220647,24.805065", "Toilet","images/toilet.jpg","1st Floor, A-Building");
-    	codeLatLng("60.221006,24.804713", "Toilet","images/toilet.jpg","1st Floor, A-Building");
-    	codeLatLng("60.221816,24.804205", "Toilet","images/toilet.jpg","2nd Floor, B-Building");
-    	codeLatLng("60.220647,24.804250", "Toilet","images/toilet.jpg","1st Floor, A-Building");
+    	//codeLatLng("60.221006,24.804713", "Toilet","images/toilet.jpg","1st Floor, A-Building");
+    	//codeLatLng("60.221816,24.804205", "Toilet","images/toilet.jpg","2nd Floor, B-Building");
+    	//codeLatLng("60.220647,24.804250", "Toilet","images/toilet.jpg","1st Floor, A-Building");
+    	codeLatLng("60.221007,24.804050", "Cafeteria","images/food.gif","1st Floor, A-Building");
+    	codeLatLng("60.221457,24.804050", "Library","images/book.jpg","1st Floor, A-Building");
+    	codeLatLng("60.221000,24.805050", "Porter","images/porter.png","1st Floor, A-Building");
+    	codeLatLng("60.221000,24.804650", "Entrance","images/entrance.png","1st Floor, A-Building");
+
+
+    }
+
+    function toggleEntranceMarkers()
+    {
+    	mainEntranceVisible= !mainEntranceVisible;
+    	for(var i=0;i<markers.length;i++)
+    	{
+    		if(markers[i].title=="Entrance")
+    		{
+    			markers[i].setVisible(mainEntranceVisible);
+    			markers[i].infowindow.close();
+    		}
+    	}
+
+    }
+
+function togglePorterMarkers()
+    {
+    	porterVisible= !porterVisible;
+    	for(var i=0;i<markers.length;i++)
+    	{
+    		if(markers[i].title=="Porter")
+    		{
+    			markers[i].setVisible(porterVisible);
+    			markers[i].infowindow.close();
+    		}
+    	}
+
+    }
+
+    function toggleFoodMarkers()
+    {
+    	foodVisible= !foodVisible;
+    	for(var i=0;i<markers.length;i++)
+    	{
+    		if(markers[i].title=="Cafeteria")
+    		{
+    			markers[i].setVisible(foodVisible);
+    			markers[i].infowindow.close();
+    		}
+    	}
+
+    }
+
+
+    function toggleLibraryMarkers()
+    {
+    	libraryVisible= !libraryVisible;
+    	for(var i=0;i<markers.length;i++)
+    	{
+    		if(markers[i].title=="Library")
+    		{
+    			markers[i].setVisible(libraryVisible);
+    			markers[i].infowindow.close();
+    		}
+    	}
+
     }
 
 
     function toggleToiletMarkers()
     {
+
+
     	toiletsVisible= !toiletsVisible;
     	for(var i=0;i<markers.length;i++)
     	{

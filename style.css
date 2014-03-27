@@ -1,26 +1,34 @@
 @charset "utf-8";
 /* CSS Document */
 
-body{
+html, body{
 	background: #ffdba3;
 	font-size:87.5%; /*Base font size is 14px so roughly 12*/
 	font-family:Arial, "Lucida Sans Unicode";/*sets font*/
 	line-height:1.5; /*sets line height*/
 	text-align:left;
 	color:#C30;
+	height: 100%;
 }
+#wrapper {min-height: 100%;}
+
+.selected{
+		background-color: #666;
+}
+
+
 #mapContent{
 	border-radius:5px;
 	-moz-border-radius:5px;
 	-webkit-border-radius:5px; 
 	margin-top:2%;
 	width:100%;
-	height:500px;
+	height:400px;
 }
 
 #mapCanvas{
 	width:100%;
-	height:70%;
+	height:100%;
 	border-radius:5px;
 	-moz-border-radius:10px;
 	-webkit-border-radius:5px; 
@@ -63,18 +71,18 @@ margin-bottom:1%;
 }
 
 /*the navbar*/
-ul{
+.sideNav ul{
 	list-style:none;
 	padding:0;
 }
-ul li{
+.sideNav ul li{
 	display:block;
 }
-nav{
+.sideNav{
 	float:left;	
 	margin-right:5%;
 }
-nav a:link{
+.sideNav a:link{
 	color:#FFFFFF;
 	display:inline-block;
 	padding:10px 25px;/*come back later to assign height*/
@@ -82,7 +90,7 @@ nav a:link{
 	width:150px;
 	background:#F63;
 }
-nav a:hover{
+.sideNav a:hover{
 	color:#FFFFFF;
 	display:inline-block;
 	padding:10px 25px;/*come back later to assign height*/
@@ -108,6 +116,7 @@ nav a:hover{
 
 .content{
 	width:70%;
+	height: 100%;
 	float:left;/*in order to be able to have sidebar on right*/	
 }
 .image{
@@ -161,15 +170,20 @@ color:#3972B7;
 
 
 .mainFooter{
-	width:100%;
-	float:left;
-	background:#F30;
+	width: 100%;
+	height: 40px;
+	float: left;
+	border-radius: 5px;
+	-moz-border-radius: 5px;
+	-webkit-border-radius: 5px;
+	background-color: 	#F63;
+	margin: 2% 0;
 }
 
 .mainFooter p{
-	width:90%;
-	margin-left: 2%;
-	color:#FFF;
+	width: 92%;
+	margin: 10px auto;
+	color: #FFF;
 }
 
 @media only screen and (min-width: 641px) and (max-width:800px)
@@ -244,6 +258,11 @@ color:#3972B7;
 	
 	.mainFooter{
 		margin:3% 0 2% 0;
+	}
+
+	#mapContent
+	{
+		height: 300px;
 	}
 	
 }
