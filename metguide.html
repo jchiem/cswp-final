@@ -1,0 +1,118 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Joakim Chiem - Home</title>
+    <meta charset="utf-8" />
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+
+	<!--Google API and Key-->
+    <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
+	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWGWotumEr74o0at1GwIyfTAEPJzYSl3c&sensor=false"></script>
+    <script type="text/javascript" src="js/mapScript.js"></script>
+    <link rel="stylesheet" type="text/css" href="css/component.css" />
+    <script src="js/modernizr.custom.js"></script>
+    <link rel="stylesheet" type="text/css" href="style.css" />
+
+
+</head>
+
+<body class="body">
+<div id="wrapper">
+	<header class="mainHeader">
+    	<a href="#"><img src="images/logo.gif"></a>
+    </header>
+    <nav class="sideNav">
+    <ul>
+        <li><a id="active" href="index.html">Home </a></li>
+        <li><a href="metguide.html">Met Guide</a></li>
+        <li><a href="#">Something </a></li>
+    </ul>
+    </nav>
+    <div class="mainContent">
+   		<div class="content">
+        <content>
+			<p>This website was made for a final assignment in Client-side webprogramming, a course given at Helsinki Metropolia University of Applied Sciences by Joakim Chiem &amp Marc-Andre Leprohon</p>
+			<p>Please click the links to display things on the map. </p>
+			<div id="mapContent"><div id="mapCanvas"></div></div>
+        </content>
+
+           <nav  id="menu" class="nav">  
+    <ul>
+        <li>
+            <a title="Click to do something" href="#" onclick="showLocation();return false;">
+                <span  class="icon"> <i aria-hidden="true"  ></i></span><span>Show Metropolia</span>
+            </a>
+        </li>
+        <li>      
+            <a title="Click to do something" class="mapMenu" href="#" onclick="toggleToiletMarkers();return false;"><span  class="icon"><i aria-hidden="true"></i></span><span>Toilet</span></a>
+        </li> 
+        <li>
+            <a title="Click to do something" class="mapMenu" href="#" onclick="toggleFoodMarkers();return false;"><span  class="icon"><i  aria-hidden="true" ></i></span><span>Cafeteria</span></a>
+        </li>
+        <li>
+            <a title="Click to do something" class="mapMenu" href="#" onclick="toggleLibraryMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Library</span></a> 
+        </li>
+        <li>
+            <a title="Click to do something" class="mapMenu" href="#" onclick="togglePorterMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Porter</span></a>    
+        </li>
+        <li>
+            <a title="Click to do something" class="mapMenu" href="#" onclick="toggleEntranceMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Main entrance</span></a>
+        </li>
+    </ul>
+</nav>
+
+        </div>
+
+
+    </div>
+
+
+    </div>
+
+ 
+
+<footer class="mainFooter">
+        <p>Copyright Joakim and Marc</p>
+    </footer>
+
+        <script>
+            $(document).ready(function(){
+                $('.mapMenu').on('click', function(e) {
+                    $(this).toggleClass("selected");
+                });
+            });
+
+        </script>
+
+        <script>    
+            //  The function to change the class
+            var changeClass = function (r,className1,className2) {
+                var regex = new RegExp("(?:^|\\s+)" + className1 + "(?:\\s+|$)");
+                if( regex.test(r.className) ) {
+                    r.className = r.className.replace(regex,' '+className2+' ');
+                }
+                else{
+                    r.className = r.className.replace(new RegExp("(?:^|\\s+)" + className2 + "(?:\\s+|$)"),' '+className1+' ');
+                }
+                return r.className;
+            };  
+
+            //  Creating our button in JS for smaller screens
+            var menuElements = document.getElementById('menu');
+            menuElements.insertAdjacentHTML('afterBegin','<button type="button" id="menutoggle" class="navtoogle" aria-hidden="true"><i aria-hidden="true" class="icon-menu"> </i> Menu</button>');
+
+            //  Toggle the class on click to show / hide the menu
+            document.getElementById('menutoggle').onclick = function() {
+                changeClass(this, 'navtoogle active', 'navtoogle');
+            }
+
+        
+        </script>
+
+
+
+</body>
+
+</html>
