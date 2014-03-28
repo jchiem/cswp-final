@@ -15,7 +15,7 @@
     <script src="js/modernizr.custom.js"></script>
     <link rel="stylesheet" type="text/css" href="style.css" />
         <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">google.load("feeds", "1");</script>
+    <script type="text/javascript">google.load("feeds", "1");</script>´
 
 
 </head>
@@ -27,15 +27,14 @@
     </header>
     <nav class="sideNav">
     <ul>
-        <li><a id="active" href="index.html">Home </a></li>
+        <li><a href="index.html">Home </a></li>
         <li><a href="metguide.html">School map</a></li>
         <li><a href="gallery.html">Photos</a></li>
-        <li><a href="menu.html">Cateferia Menu</a></li>
+        <li><a id="active" href="menu.html">Cateferia Menu</a></li>
     </ul>
     </nav>
         <content class="mainContent">
         <h1>This week's menu at UniCafe Metropolia Vanha Maatie</h1>
-        <h3>Data only available from Monday to Thursday for this location. Reason unknown!</h3>
 			<div id="menu"></div>
 		</content>
 
@@ -51,12 +50,13 @@
     
 
     <script>
+
  $(document).ready(function(){
-    var feed = new google.feeds.Feed('http://www.hyyravintolat.fi/rss/eng/32/');
+    var feed = new google.feeds.Feed('http://www.hyyravintolat.fi/rss/eng/35/');
+	feed.setNumEntries(5);
     feed.load(function (data) {
-    
     // Incomming data is supposed to be JSON but getting an error when trying to parse it directly. Stringifying it solves the issue.
-    var str = JSON.stringify(data, undefined, 2);
+    var str = JSON.stringify(data, null, 2);
     
     //Now we can parse the JSON object into a plain JS object.
     var obj = jQuery.parseJSON(str);
@@ -69,13 +69,13 @@
     entries.forEach(function(entry){
         //console.log(entry);
         var content = entry.content;
-        var HTMLstripped = content.replace(/(<([^>]+)>)/ig,"");
+	//	alert(content);
+   //     var HTMLstripped = content.replace(/(<([^>]+)>)/ig,"");
         div.innerHTML += '<b>' + entry.title + ('<b><br>');
-        div.innerHTML += HTMLstripped + ('<br><br><br>');
+        div.innerHTML += content + ('<br><br><br>');
     });    
-    
     });
- });
+});
 </script>
 
 </body>

@@ -20,9 +20,9 @@
     </header>
     <nav class="sideNav">
     <ul>
-        <li><a id="active" href="index.html">Home </a></li>
+        <li><a href="index.html">Home </a></li>
         <li><a href="metguide.html">School map</a></li>
-        <li><a href="gallery.html">Photos</a></li>
+        <li><a id="active" href="gallery.html">Photos</a></li>
         <li><a href="menu.html">Cateferia Menu</a></li>
     </ul>
     </nav>
@@ -35,9 +35,9 @@
                 <p> Enjoy the pictures. :) </p>
            
 			<ul id="slideShow">
-				<li><a href="#slide1"><img src="images/image-1.jpg" alt="This is caption 1 <a href='#link'>Even with links!</a>"></a></li>
-				<li><a href="#slide2"><img src="images/image-2.jpg"  alt="This is caption 2"></a></li>
-				<li><a href="#slide3"><img src="images/image-4.jpg" alt="And this is some very long caption for slide 3. Yes, really long."></a></li>
+				<li><a href="#slide1"><img src="images/image-1.jpg" alt="This is Metropolia's main entrance"></a></li>
+				<li><a href="#slide2"><img src="images/image-2.jpg" alt="Metropolia at night."></a></li>
+				<li><a href="#slide3"><img src="images/image-4.jpg" alt="Metropolia parking lot outside of main entrance."></a></li>
 			</ul>
 		</content>
     
@@ -48,40 +48,12 @@
 				var slideShow = $("#slideShow").slippry({
 					transition: 'fade',
 					useCSS: true,
-					speed: 1000,
-					pause: 3000,
-					auto: true,
+					speed: 1000, //fade in fade out speed
+					pause: 0, //milliseconds before next image
+					auto: false,
 					preload: 'visible'
 				});
 
-				$('.stop').click(function () {
-					slideShow.stopAuto();
-				});
-
-				$('.start').click(function () {
-					slideShow.startAuto();
-				});
-
-				$('.prev').click(function () {
-					slideShow.goToPrevSlide();
-					return false;
-				});
-				$('.next').click(function () {
-					slideShow.goToNextSlide();
-					return false;
-				});
-				$('.reset').click(function () {
-					slideShow.destroySlider();
-					return false;
-				});
-				$('.reload').click(function () {
-					slideShow.reloadSlider();
-					return false;
-				});
-				$('.init').click(function () {
-					slideShow = $("#slideShow").slippry();
-					return false;
-				});
 			});
 
 </script>
