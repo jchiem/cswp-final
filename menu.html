@@ -33,7 +33,9 @@
         <li><a href="menu.html">Cateferia Menu</a></li>
     </ul>
     </nav>
-        <content>
+        <content class="mainContent">
+        <h1>This week's menu at UniCafe Metropolia Vanha Maatie</h1>
+        <h3>Data only available from Monday to Thursday for this location. Reason unknown!</h3>
 			<div id="menu"></div>
 		</content>
 
@@ -52,29 +54,29 @@
  $(document).ready(function(){
     var feed = new google.feeds.Feed('http://www.hyyravintolat.fi/rss/eng/32/');
     feed.load(function (data) {
-    // Parse data depending on the specified response format, default is JSON.
+    
+    // Incomming data is supposed to be JSON but getting an error when trying to parse it directly. Stringifying it solves the issue.
     var str = JSON.stringify(data, undefined, 2);
-    //console.log(str);
+    
+    //Now we can parse the JSON object into a plain JS object.
     var obj = jQuery.parseJSON(str);
-    //var parsed = JSON.parse(obj);
-    var entries = obj.feed.entries;
-    
-    entries.forEach(function(entry){
-        console.log(entry);
-        var div = document.getElementById('menu');
-        div.innerHTML += entry.title + ('<br>');
-        div.innerHTML += entry.contentSnippet + ('<br><br>');
-    });
-    
-    //console.log(obj.feed.entries[0].content);
-    
-    
-});
- });
- 
- 
 
-    </script>
+    //obj.feed.entries contains an array for every day of the week.
+    var entries = obj.feed.entries;
+    var div = document.getElementById('menu');
+
+    //using the forEach loop to print the contennt of the array.
+    entries.forEach(function(entry){
+        //console.log(entry);
+        var content = entry.content;
+        var HTMLstripped = content.replace(/(<([^>]+)>)/ig,"");
+        div.innerHTML += '<b>' + entry.title + ('<b><br>');
+        div.innerHTML += HTMLstripped + ('<br><br><br>');
+    });    
+    
+    });
+ });
+</script>
 
 </body>
 
