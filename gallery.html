@@ -1,68 +1,68 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>CSWP Final Assignment - Home</title>
-    <meta charset="utf-8" />
-    
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
+	<title>CSWP Final Assignment - Home</title>
+	<meta charset="utf-8" />
+
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 	<script src="js/slippry.min.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css" />
+	<link rel="stylesheet" type="text/css" href="css/style.css" />
 	<link rel="stylesheet" href="css/slippry.css">
 
 </head>
 
-<body class="body">
-<div id="wrapper">
-	<header class="mainHeader">
-    	<a href="#"><img src="images/logo.gif"></a>
-    </header>
-    <nav class="sideNav">
-    <ul>
-        <li><a href="index.html">Home </a></li>
-        <li><a href="metguide.html">School map</a></li>
-        <li><a id="active" href="gallery.html">Photos</a></li>
-        <li><a href="menu.html">Cateferia Menu</a></li>
-    </ul>
-    </nav>
-   
-        <content class="mainContent">
-			<p>This website was made for a final assignment in Client-side webprogramming, a course given at Helsinki Metropolia University of Applied Sciences by Joakim Chiem &amp Marc-Andre Leprohon</p>
+<body id="body">
+	<div id="wrapper">
+		<header id="mainHeader">
+			<a href="#"><img src="images/logo.gif" alt="logo"></a>
+		</header>
+		<nav id="sideNav">
+			<ul>
+				<li><a href="index.html">Home </a></li>
+				<li><a href="metguide.html">School map</a></li>
+				<li><a id="active" href="gallery.html">Photos</a></li>
+				<li><a href="menu.html">Cateferia Menu</a></li>
+			</ul>
+		</nav>
+
+		<main id="mainContent">
+			<p>This website was made for a final assignment in Client-side webprogramming, a course given at Helsinki Metropolia University of Applied Sciences by Joakim Chiem &amp; Marc-Andre Leprohon</p>
 			
-          
-				<h1>Gallery</h1>
-                <p> Enjoy the pictures. :) </p>
-           
+
+			<h1>Gallery</h1>
+			<p> Enjoy the pictures. :) </p>
+
 			<ul id="slideShow">
 				<li><a href="#slide1"><img src="images/image-1.jpg" alt="This is Metropolia's main entrance"></a></li>
 				<li><a href="#slide2"><img src="images/image-2.jpg" alt="Metropolia at night."></a></li>
 				<li><a href="#slide3"><img src="images/image-4.jpg" alt="Metropolia parking lot outside of main entrance."></a></li>
 			</ul>
-		</content>
-    
-</div>
+		</main>
 
-<script type="text/javascript">
-				$(function() {
-				var slideShow = $("#slideShow").slippry({
-					transition: 'fade',
-					useCSS: true,
+	</div>
+
+	<script type="text/javascript">
+		$(function() {
+			var slideShow = $("#slideShow").slippry({
+				transition: 'fade',
+				useCSS: true,
 					speed: 1000, //fade in fade out speed
 					pause: 0, //milliseconds before next image
 					auto: false,
 					preload: 'visible'
 				});
 
-			});
+		});
 
-</script>
- 
+	</script>
 
-<footer class="mainFooter">
-        <p>Copyright Joakim and Marc</p>
-    </footer>
 
-    
+	<footer id="mainFooter">
+		<p>Copyright Joakim and Marc</p>
+	</footer>
+
+
 
 
 

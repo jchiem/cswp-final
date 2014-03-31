@@ -7,53 +7,54 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script type="text/javascript" src="http://code.jquery.com/jquery-latest.js"></script>
 
-	<!--Google API and Key-->
+    <!--Google API and Key-->
     <script src="https://maps.googleapis.com/maps/api/js?v=3.exp&sensor=false"></script>
-	<script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWGWotumEr74o0at1GwIyfTAEPJzYSl3c&sensor=false"></script>
-    <script type="text/javascript" src="js/mapScript.js"></script>
-    <link rel="stylesheet" type="text/css" href="css/component.css" />
-    <script src="js/modernizr.custom.js"></script>
-    <link rel="stylesheet" type="text/css" href="style.css" />
-        <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript">google.load("feeds", "1");</script>´
+    <script type="text/javascript" src="https://maps.googleapis.com/maps/api/js?key=AIzaSyBWGWotumEr74o0at1GwIyfTAEPJzYSl3c&sensor=false"></script>
+
+    <!-- Used for RSS feed parsing -->
+    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
+    <script type="text/javascript">google.load("feeds", "1");</script>
+
+    <link rel="stylesheet" type="text/css" href="css/style.css" />
+
 
 
 </head>
 
-<body class="body">
-<div id="wrapper">
-	<header class="mainHeader">
-    	<a href="#"><img src="images/logo.gif"></a>
-    </header>
-    <nav class="sideNav">
-    <ul>
-        <li><a href="index.html">Home </a></li>
-        <li><a href="metguide.html">School map</a></li>
-        <li><a href="gallery.html">Photos</a></li>
-        <li><a id="active" href="menu.html">Cateferia Menu</a></li>
-    </ul>
+<body id="body">
+    <div id="wrapper">
+       <header id="mainHeader">
+           <a href="#"><img src="images/logo.gif" alt="logo"></a>
+       </header>
+       <nav id="sideNav">
+        <ul>
+            <li><a href="index.html">Home </a></li>
+            <li><a href="metguide.html">School map</a></li>
+            <li><a href="gallery.html">Photos</a></li>
+            <li><a id="active" href="menu.html">Cateferia Menu</a></li>
+        </ul>
     </nav>
-        <content class="mainContent">
-        <h1>This week's menu at UniCafe Metropolia Vanha Maatie</h1>
-			<div id="menu"></div>
-		</content>
+    <main id="mainContent">
+        <h1>This week's menu at UniCafe Metropolia Vanha Maamtie</h1>
+        <div id="menu"></div>
+    </main>
 
 
 </div>
 
- 
 
-<footer class="mainFooter">
-        <p>Copyright Joakim and Marc</p>
-    </footer>
 
-    
+<footer id="mainFooter">
+    <p>Copyright Joakim and Marc</p>
+</footer>
 
-    <script>
 
- $(document).ready(function(){
+
+<script>
+
+   $(document).ready(function(){
     var feed = new google.feeds.Feed('http://www.hyyravintolat.fi/rss/eng/35/');
-	feed.setNumEntries(5);
+    feed.setNumEntries(5);
     feed.load(function (data) {
     // Incomming data is supposed to be JSON but getting an error when trying to parse it directly. Stringifying it solves the issue.
     var str = JSON.stringify(data, null, 2);
@@ -69,12 +70,11 @@
     entries.forEach(function(entry){
         //console.log(entry);
         var content = entry.content;
-	//	alert(content);
-   //     var HTMLstripped = content.replace(/(<([^>]+)>)/ig,"");
+
         div.innerHTML += '<b>' + entry.title + ('<b><br>');
         div.innerHTML += content + ('<br><br><br>');
     });    
-    });
+});
 });
 </script>
 
