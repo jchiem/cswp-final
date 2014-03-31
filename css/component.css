@@ -279,7 +279,7 @@ a, button {
 
 /* The "tablet" and "mobile" version */
 
-@media (min-width: 150px) and (max-width: 767px) {		
+@media (min-width: 150px) and (max-width: 640px) {		
 	
 	/* Instead of adding a border, we transition the background color */
 	.no-touch .nav ul li:nth-child(6n+1) a:hover,
