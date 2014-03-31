@@ -1,5 +1,5 @@
     var map;
-	var markers = []; //1 = toilets 2 = computer labs //3 = cafeteria //4 = library //
+	var markers = []; 
 	var toiletArray;
 	var mapcanvas;
 	var metropoliaLocation;
@@ -15,23 +15,6 @@
 	var porterVisible=false;
 	var mainEntranceVisible=false;
 	
-		/* Geocoding based on address */
-	function codeAddress(address, title, imageURL, content) {
-		geocoder.geocode({ 'address': address }, function (results, status) {
-			if (status == google.maps.GeocoderStatus.OK) {
-				map.setCenter(results[0].geometry.location);
-				var marker = new google.maps.Marker({map: map,position: results[0].geometry.location,icon: imageURL,title: title});
-				markers.push(marker);
-				/* Set onclick popup */
-			//	var infowindow = new google.maps.InfoWindow({content: content});
-			//	google.maps.event.addListener(marker, 'click', function() {infowindow.open(marker.get('map'), marker);});
-			} else {
-				alert('Geocode was not successful for the following reason: ' + status);
-			}
-		});
-		
-	}
-	
 	/* Geocoding based on latitude and longitude */
 	function codeLatLng(latlng, title, imageURL, description) {
 		var latlngStr = latlng.split(',', 2);
@@ -44,9 +27,9 @@
 					map.setZoom(17);
 					map.setCenter(new google.maps.LatLng(60.221194, 24.805220));
 					var marker = new google.maps.Marker({position: latlng,map: map,icon: imageURL,title: title,content: title});
-					marker.setVisible(false);
+					marker.setVisible(false);//make the marker invisible from the start
 					markers.push(marker);
-					/* Set onclick popup */
+					/* Set onclick popup event listener */
 					marker.infowindow = new google.maps.InfoWindow({content: description});
 					google.maps.event.addListener(marker, 'click', function() {marker.infowindow.open(marker.get('map'), marker);});
 				} else {
@@ -65,47 +48,16 @@
 		var mapOptions = {
 		  center: myLatlng,
 		  zoom: 17,
-		  mapTypeId: google.maps.MapTypeId.ROADMAP
+		  mapTypeId: google.maps.MapTypeId.ROADMAP //initializing the map with zoom 17 and myLatLng as the coordinates
 		};
 		mapcanvas =document.getElementById("mapCanvas");
 		map = new google.maps.Map(mapcanvas,mapOptions);
 
-		createToiletMarkers();
+		createMarkers();
 	}
 	
-	// Deletes all markers in the array by removing references to them.
-	function deleteMarkers() {
-	  clearMarkers();
-	  markers = [];
-	}
-	
-	function clearMarkers() {
-	  setAllMap(null);
-	}
-	
-	// Sets the map on all markers in the array.
-	function setAllMap(map) {
-	  for (var i = 0; i < markers.length; i++) {
-		markers[i].setMap(map);
-	  }
-	}
-
-//old toggle function that didnt work, is actually deleting markers
-    function toggleMarker()
-    {
-		toggledMap = !toggledMap;
-		if(toggledMap)
-		{
-    		codeAddress('Vanha maantie 6, Espoo, Finland', 'Helsinki Metropolia UAS',"images/toilet.jpeg", description);
-		}
-		else
-		{
-			toggledInfo = false;
-			deleteMarkers();
-		}
-    }
-
-    function createToiletMarkers()
+//Creates markers for the map, the geocode locations were done through trial and error
+    function createMarkers()
     {
     	codeLatLng("60.220647,24.805065", "Toilet","images/toilet.jpg","1st Floor, A-Building");
     	//codeLatLng("60.221006,24.804713", "Toilet","images/toilet.jpg","1st Floor, A-Building");
@@ -119,6 +71,14 @@
 
     }
 
+/*the toggling of the markers could probably have been called with a general function and switch cases but we decided to go with 
+//this longer version where we have a function call per button instead.
+It wouldnt be too difficult to change this implementation though and we understand that it is not perfect, 
+since we are reiterating ourselves by not using a switch case statement and a generic function to be called upon being clicked.
+If we were to implement a generic function, it would probably take the ids of the buttons to determine which button has been clicked and 
+which markers to toggle, we would still need separate toggle booleans for each button in order to keep track of which buttons have been pressed
+*/
+//toggling of markers based on title
     function toggleEntranceMarkers()
     {
     	mainEntranceVisible= !mainEntranceVisible;
@@ -132,7 +92,7 @@
     	}
 
     }
-
+//toggling of markers based on title
 function togglePorterMarkers()
     {
     	porterVisible= !porterVisible;
@@ -146,7 +106,7 @@ function togglePorterMarkers()
     	}
 
     }
-
+//toggling of markers based on title
     function toggleFoodMarkers()
     {
     	foodVisible= !foodVisible;
@@ -161,7 +121,7 @@ function togglePorterMarkers()
 
     }
 
-
+//toggling of markers based on title
     function toggleLibraryMarkers()
     {
     	libraryVisible= !libraryVisible;
@@ -176,7 +136,7 @@ function togglePorterMarkers()
 
     }
 
-
+//toggling of markers based on title
     function toggleToiletMarkers()
     {
 
@@ -192,29 +152,16 @@ function togglePorterMarkers()
     	}
     }
 
-	function showInfo()
-	{
-		if(!toggledMap){
-			return;
-		}
-		toggledInfo = !toggledInfo;
-		if(toggledInfo)
-		{
-			for (var i = 0; i < markers.length; i++) {
-			 	infoWindow.open(map, markers[i]);
-	  		}	
-		}
-		else{
-			 toggledInfo=false;
-			 infoWindow.close(map, markers[i]);
-		}
-	}
-
+    //shows the map on the correct location
 	function showLocation()
 	{
 		centerMap("60.221194,24.805220");
 	}
 
+	//this function is used to find the coordinates of the center position and set zoom. We didnt want to call this in the index.html because
+	//it looks kind of ugly if the geocode coordinates are visible directly in the source code. (even though it is possible to find this js file as well)
+	//plus it might be more useful if we decide to add more schools, in case we want to show another location as well, then we could implement a switch case statement which will find the button pressed
+	//and take it to a location dependent on which button was pressed
 	function centerMap(latlng)
 	{
 		var latlngStr = latlng.split(',', 2);
@@ -224,7 +171,7 @@ function togglePorterMarkers()
 		geocoder.geocode({ 'latLng': latlng }, function (results, status) {
 			if (status == google.maps.GeocoderStatus.OK) {
 				if (results[1]) {
-					map.setZoom(17);
+					map.setZoom(17); //sets the zoom to the start zoom
 					map.setCenter(latlng);
 				} else {
 					alert('No results found');
@@ -235,6 +182,7 @@ function togglePorterMarkers()
 		});
 	}
 	
-    google.maps.event.addDomListener(window, 'load', initialize);
+
+    google.maps.event.addDomListener(window, 'load', initialize); // the function which initializes the map upon window loading
 
 

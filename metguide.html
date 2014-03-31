@@ -1,7 +1,7 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <title>Joakim Chiem - Home</title>
+    <title>CSWP Final Assignment - School Map</title>
     <meta charset="utf-8" />
     
     <!--Used for responsive design-->
@@ -34,10 +34,10 @@
        </header>
        <nav id="sideNav">
         <ul>
-            <li><a href="index.html">Home </a></li>
-            <li><a id="active" href="metguide.html">School map</a></li>
-            <li><a href="gallery.html">Photos</a></li>
-            <li><a href="menu.html">Cateferia Menu</a></li>
+            <li><a class="notCurrent" href="index.html">Home </a></li>
+            <li><a id="current" href="metguide.html">School map</a></li>
+            <li><a class="notCurrent" href="gallery.html">Photos</a></li>
+            <li><a class="notCurrent" href="menu.html">Cateferia Menu</a></li>
         </ul>
     </nav>
     <div id="mainContent">
@@ -51,24 +51,24 @@
      <nav class="nav">  
         <ul>
             <li>
-                <a title="Click to do something" href="#" onclick="showLocation();return false;">
-                    <span  class="icon"> <i aria-hidden="true"  ></i></span><span>Show Metropolia</span>
+                <a title="Show Metropolia" href="#" onclick="showLocation();return false;">
+                    <span  class="icon"> <i aria-hidden="true"  ></i></span><span>Show School</span>
                 </a>
             </li>
             <li>      
-                <a title="Click to do something" class="mapMenu" href="#" onclick="toggleToiletMarkers();return false;"><span  class="icon"><i aria-hidden="true"></i></span><span>Toilet</span></a>
+                <a title="Show/Hide Toilets" class="mapMenu" href="#" onclick="toggleToiletMarkers();return false;"><span  class="icon"><i aria-hidden="true"></i></span><span>Toilet</span></a>
             </li> 
             <li>
-                <a title="Click to do something" class="mapMenu" href="#" onclick="toggleFoodMarkers();return false;"><span  class="icon"><i  aria-hidden="true" ></i></span><span>Cafeteria</span></a>
+                <a title="Show/Hide Cafeteria" class="mapMenu" href="#" onclick="toggleFoodMarkers();return false;"><span  class="icon"><i  aria-hidden="true" ></i></span><span>Cafeteria</span></a>
             </li>
             <li>
-                <a title="Click to do something" class="mapMenu" href="#" onclick="toggleLibraryMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Library</span></a> 
+                <a title="Show/Hide Library" class="mapMenu" href="#" onclick="toggleLibraryMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Library</span></a> 
             </li>
             <li>
-                <a title="Click to do something" class="mapMenu" href="#" onclick="togglePorterMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Porter</span></a>    
+                <a title="Show/Hide Porters Office" class="mapMenu" href="#" onclick="togglePorterMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Porter</span></a>    
             </li>
             <li>
-                <a title="Click to do something" class="mapMenu" href="#" onclick="toggleEntranceMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Main entrance</span></a>
+                <a title="Show/Hide Main entrance" class="mapMenu" href="#" onclick="toggleEntranceMarkers();return false;"><span  class="icon"><i  aria-hidden="true"></i></span><span>Main entrance</span></a>
             </li>
         </ul>
     </nav>
@@ -83,9 +83,10 @@
 
 
 <footer id="mainFooter">
-    <p>Copyright Joakim and Marc</p>
+    <p>Copyright &copy; Joakim and Marc</p>
 </footer>
 
+<!-- document.ready function is used to ensure that all the elements have been loaded before calling any jquery method  -->
 <script>
     $(document).ready(function(){
         $('.mapMenu').on('click', function(e) {
